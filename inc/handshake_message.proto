@@ -1,0 +1,22 @@
+package miu;
+
+message handshake {
+  required string version = 1;			// handshake message version
+
+  required string host = 2;			// host, such as ptt.cc
+  
+  required uint32 port = 3;			// port, such as 23
+  
+  required string user = 4;			// user account on the host
+  
+  optional string cookie = 5;			// a cookie to resume connection
+  
+  required string uuid = 6;			// unique device identifier
+  
+  required uint64 timestamp = 7;		// timestamp when this message is being created
+  
+  required string hash = 8;			// an md5 hash of "<user>@<host>:<port>+<uuid>+<timestamp>+<secret>", omit "<>", keep "@:+"
+  									// a secret is by default "". Or create your own for your proxy user group
+
+  optional string app = 9;			// which application making the request ?
+}
